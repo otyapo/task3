@@ -5,19 +5,13 @@
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "name" %>
   </div>
 
-  <!-- Emails削除
-   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  Email削除ここまで -->
 
   <div class="field">
     <%= f.label :Password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.password_field :password, autocomplete: "current-password",class: "password" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>

@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
 before_action :authenticate_user!
+before_action :correct_user, only: [:edit, :update]
 
   def index
     @user = User.find(current_user[:id])
@@ -43,6 +44,13 @@ before_action :authenticate_user!
     book = Book.find(params[:id])
     book.destroy
     redirect_to books_path, notice:"Book was successfully destroyed"
+  end
+
+  def correct_user
+    @book = current_user.book.find_by(id: params[:id])
+    unless @book
+      redirect_to root_url
+    end
   end
 
 
