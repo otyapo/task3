@@ -1,0 +1,42 @@
+
+		<div class="col-lg-3">
+			<h2>Users info</h2>
+                  <%= attachment_image_tag @user, :photo, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+                  <table class="table">
+            	        <tbody>
+            	            <tr>
+                              <th>name</th>
+                              <th><%= @user.name %></th>
+                            </tr>
+            		          <tr>
+                              <td>intoduction</>
+            			            <td><%= @user.introduction %></td>
+            		          </tr>
+            	        </tbody>
+                  </table>
+
+                        <td><%= link_to edit_user_path(@user) do %>
+                        <p class= "col-xs-12 btn btn-default glyphicon glyphicon-wrench"></p>
+                        <% end %>
+
+
+<% if @bookf.errors.any? %>
+        <%= @bookf.errors.count %>件のエラーが発生しました
+        <% @bookf.errors.full_messages.each do |message| %>
+            <%= message %>
+        <% end %>
+    <% end %>
+
+                  <h1>New Book</h1>
+			<%= form_for(@bookf) do |f| %>
+			<h4>Title</h4>
+			<%= f.text_field :title %>
+
+			<h4>Opinion</h4>
+			<%= f.text_area :body %>
+			<br>
+			<%= f.submit 'Create Book' %>
+
+			<% end %>
+
+    	      </div>
