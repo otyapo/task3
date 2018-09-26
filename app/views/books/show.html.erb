@@ -1,10 +1,9 @@
 <%= render 'users/list', users: @user %>
+<p class="ctreate.book"><%= flash[:notice]%></p>
+
 
 　　　　　　　　　　<!--投稿詳細-->
 		<div class="col-lg-9">
-			<% if flash[:notice] %>
-                <p class="create"><%= flash[:notice]%></p>
-            <% end %>
 			<h2>Book detail</h2>
 			<table class="table">
 				<thead>
@@ -21,7 +20,7 @@
 
                             <% if @book.user == current_user %>
                             <td class="btn-sm btn-success">
-                            <%= link_to 'Edit' ,edit_book_path(@book), class: "edit_book#{@book.id}"  %>
+                            <%= link_to 'Edit' ,edit_book_path(@book), class: "edit_book_#{@book.id}"  %>
                             </td>
                             <td class="btn-sm btn-danger">
 

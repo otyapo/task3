@@ -1,4 +1,6 @@
 <%= render 'users/list', users: @users %>
+
+<p class="update_user"><%= flash[:notice]%></p>
 <!--投稿一覧-->
 <div class="container">
 	<div class="row">
@@ -15,7 +17,7 @@
 
 					<tr>
 						<td><%= attachment_image_tag @user, :photo, :fill, 20, 20, format: 'jpeg', fallback: "no_image.jpg" %></td>
-						<td><%= link_to book_path(book), class: "book_#{@book}" do %>
+						<td><%= link_to book_path(book), class: "book_#{book.id}" do %>
 						<%= book.title %>
 						<% end %>
 						</td>
