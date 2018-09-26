@@ -13,7 +13,7 @@ before_action :correct_user, only: [:edit, :update]
     @bookf.user_id = current_user.id
     if @bookf.save
     redirect_to book_path(@bookf.id)
-    flash[:notice] = "Book was seccessfully created"
+    flash[:notice] = "Book was successfully created"
     else
     @user = current_user
     @books = @user.book.all

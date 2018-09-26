@@ -1,3 +1,4 @@
+flash[:notice]
 
 		<div class="col-lg-3">
 			<h2>Users info</h2>
@@ -15,9 +16,18 @@
             	        </tbody>
                   </table>
 
-                        <td><%= link_to edit_user_path(@user),class: "edit_user_#{current_user.id}" do %>
+
+                      <% if @user == "current_user" %>
+                        <td><%= link_to edit_user_path(@user),class: "edit_user_#{@user.id}" do %>
                         <p class= "col-xs-12 btn btn-default glyphicon glyphicon-wrench"></p>
                         <% end %>
+                        <% else %>
+                        <td><%= link_to user_path(current_user), class: "user_#{current_user}" do %>
+                        <p class= "col-xs-12 btn btn-default glyphicon glyphicon-wrench"></p>
+                        <% end %>
+                      <% end %>
+
+
 
 
 <% if @bookf.errors.any? %>
