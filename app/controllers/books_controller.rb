@@ -3,7 +3,7 @@ before_action :authenticate_user!
 before_action :correct_user, only: [:edit, :update]
 
   def index
-    @user = User.find(current_user[:id])
+    @user = User.find(current_user.id)
     @books = Book.all
     @bookf = Book.new
   end

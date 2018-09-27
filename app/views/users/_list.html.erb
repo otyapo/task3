@@ -2,29 +2,34 @@ flash[:notice]
 
 		<div class="col-lg-3">
 			<h2>Users info</h2>
-                  <%= attachment_image_tag @user, :photo, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+                  <%= attachment_image_tag user, :photo, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
                   <table class="table">
             	        <tbody>
             	            <tr>
                               <th>name</th>
-                              <th><%= @user.name %></th>
+                              <th><%= user.name %></th>
                             </tr>
             		          <tr>
                               <td>intoduction</>
-            			            <td><%= @user.introduction %></td>
+            			            <td><%= user.introduction %></td>
             		          </tr>
             	        </tbody>
                   </table>
 
 
-                      <% if @user == "current_user" %>
-                        <td><%= link_to edit_user_path(@user),class: "edit_user_#{@user.id}" do %>
-                        <p class= "col-xs-12 btn btn-default glyphicon glyphicon-wrench"></p>
-                        <% end %>
-                        <% else %>
-                        <td><%= link_to user_path(current_user), class: "user_#{current_user}" do %>
-                        <p class= "col-xs-12 btn btn-default glyphicon glyphicon-wrench"></p>
-                        <% end %>
+                      <% if user.id == current_user.id %>
+                        <td>
+                          <%= link_to edit_user_path(current_user),class: "edit_user_#{current_user.id}" do %>
+                             <p class= "col-xs-12 btn btn-default glyphicon glyphicon-wrench"></p>
+                          <% end %>
+                        </td>
+
+                      <% else %>
+                          <td>
+                            <%= link_to user_path(current_user), class: "user_#{current_user.id}" do %>
+                              <p class= "col-xs-12 btn btn-default glyphicon glyphicon-wrench"></p>
+                            <% end %>
+                          </td>
                       <% end %>
 
 
@@ -32,7 +37,7 @@ flash[:notice]
 
 <% if @bookf.errors.any? %>
         <%= @bookf.errors.count %>件のエラーが発生しました
-        <% @bookf.errors.full_messages.each do |message| %>
+        <% @bookf.errors.full_messages.each do |message| %>s
             <%= message %>
         <% end %>
     <% end %>
